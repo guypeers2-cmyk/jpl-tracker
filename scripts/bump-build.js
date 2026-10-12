@@ -1,0 +1,21 @@
+// Verhoogt het build-ID in index.html en de cachenaam in sw.js. Draait vóór elke deploy.
+const fs = require('fs');
+const path = require('path');
+const root = path.join(__dirname, '..');
+const today = new Date().toISOString().slice(0, 10);
+const idxPath = path.join(root, 'index.html');
+const swPath = path.join(root, 'sw.js');
+let html = fs.readFileSync(idxPath, 'utf8');
+const m = /<meta name="build" content="(\d{4}-\d{2}-\d{2})-(\d+)">/.exec(html);
+if (!m) throw new Error('build-meta niet gevonden in index.html');
+const n = m[1] === today ? Number(m[2]) + 1 : 1;
+const build = `${today}-${n}`;
+html = html.replace(m[0], `<meta name="build" content="${build}">`);
+fs.writeFileSync(idxPath, html);
+let sw = fs.readFileSync(swPath, 'utf8');
+const c = /const CACHE = 'jpl-v(\d+)';/.exec(sw);
+if (!c) throw new Error('CACHE niet gevonden in sw.js');
+const cache = Number(c[1]) + 1;
+sw = sw.replace(c[0], `const CACHE = 'jpl-v${cache}';`);
+fs.writeFileSync(swPath, sw);
+console.log(`build ${build}, cache jpl-v${cache}`);
