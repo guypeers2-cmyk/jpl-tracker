@@ -98,3 +98,12 @@ Not changed, needs a decision:
 **Squad 6 DevOps:** `scripts/bump-build.js` (build-ID en cachenaam automatisch), `scripts/deploy.sh` (validatie, bump, link-check, deploy), `scripts/smoke.py` (smoketest), `scripts/check-links.js`, `RUNBOOK.md` (deploy en rollback), `CHECKLIST.md` (per speeldag), git-repository met `.gitignore`.
 
 **Niet uitgevoerd (keuze of extern nodig):** visitor-teller/consent (26–27), privacyverklaring (32, juridische tekst), clublogo's (49), token intrekken (30, moet in het Cloudflare-dashboard), topscorers (2), archief en kalender-controle (7–8), overige UX- en prestatiepunten (10–25, 33–40, 41-deel).
+
+## Update: vervolg autonome uitvoering (2026-10-12)
+
+- **Franse weergave:** voettekst had Nederlandse tekst ("uitslagen", "gepland") en de verouderde tekst "63 gespeelde wedstrijden". Nu dynamisch (72) en in het Frans. Knop "Installeer de app" vertaald. Gecontroleerd: geen Nederlandse woorden meer in FR-modus.
+- **Staging:** project `jpl-tracker-staging` aangemaakt; `deploy.sh <project>` deployt naar een willekeurig project. Eerst staging, dan productie.
+- **Wrangler** vastgezet op 3.114.17 in `deploy.sh`.
+- **Taalknop** toegankelijke naam gecorrigeerd (axe: nul fouten).
+
+Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP, "laatst gecontroleerd"-tijdstip, aftraptijden-controle, archief, UX-punten uit squad 2, minificatie, uptime-monitoring, juridische controle clublogo's.
