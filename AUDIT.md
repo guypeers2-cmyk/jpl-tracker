@@ -107,3 +107,9 @@ Not changed, needs a decision:
 - **Taalknop** toegankelijke naam gecorrigeerd (axe: nul fouten).
 
 Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP, "laatst gecontroleerd"-tijdstip, aftraptijden-controle, archief, UX-punten uit squad 2, minificatie, uptime-monitoring, juridische controle clublogo's.
+
+## Update: squad 2 en 4 afgerond waar mogelijk (2026-10-12)
+- Standregel toont "bijgewerkt" met de datum van de laatste update (taak 13).
+- Klok heeft een tijdzonelabel (taak 16).
+- Gecontroleerd: focusstijl aanwezig (38), push-opt-in gebeurt pas na klik (33), contrast zonder fouten in axe (36), toetsenbordvolgorde werkt (35).
+- Niet gedaan: lege status voor "Vandaag" en uitgestelde wedstrijden (11, 12), "laatst gecontroleerd" per uitslag (5), header-compactering (14), minificatie (21): levert weinig op bij de huidige bestandsgrootte.
