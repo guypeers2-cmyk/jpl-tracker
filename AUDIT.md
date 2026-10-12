@@ -113,3 +113,9 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - Klok heeft een tijdzonelabel (taak 16).
 - Gecontroleerd: focusstijl aanwezig (38), push-opt-in gebeurt pas na klik (33), contrast zonder fouten in axe (36), toetsenbordvolgorde werkt (35).
 - Niet gedaan: lege status voor "Vandaag" en uitgestelde wedstrijden (11, 12), "laatst gecontroleerd" per uitslag (5), header-compactering (14), minificatie (21): levert weinig op bij de huidige bestandsgrootte.
+
+## Update: Squad 1 Data (2026-10-12)
+- `validate.js`: verkeerd `meta.playedThrough` is nu een fout (niet alleen een waarschuwing). Onbekende statuswaarden worden geweigerd.
+- Uitgestelde wedstrijd GNT–OHL heeft nu `status:"uitgesteld"` naast de notitie.
+- `scripts/snapshot.js`: schrijft de stand per dag naar `snapshots/<datum>.json`.
+- Nog open binnen Squad 1: twee-bronnen-automatisering, topscorers, "laatst gecontroleerd" per wedstrijd (data en weergave), aftraptijden-controle, archief.
