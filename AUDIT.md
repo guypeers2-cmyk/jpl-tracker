@@ -145,3 +145,9 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - Topscorers en assists (2), aftraptijden (6), archief (7), twee-bronnen-automatisering (1): vraagt een bron.
 - CSP (28) en inline stijlen (35): ruim 200 `style`-attributen moeten eerst naar klassen.
 - Overige ontwerp- en prestatiepunten (12, 14, 15, 17, 20, 21, 22, 23, 24, 25, 32, 38, 39, 40, 47, 48): vragen een keuze of meer tijd dan deze sessie.
+
+## Update: productie-poort, datachecks en toegankelijkheid (2026-10-12)
+- **Deploy-poort (taak 47):** `deploy.sh jpl-tracker` weigert nu tenzij staging voor exact dezelfde build is getest. De staging-smoketest zet `.staging-ok` alleen als het live build-ID gelijk is aan het lokale. Productie bumpt niet opnieuw, zodat je precies het getestte bestand uitrolt.
+- **Datachecks (taak 7, 9):** validatie controleert nu het seizoensschema (datums binnen `seasonStart`..`seasonEnd`), speeldagen binnen 1..34, en uitgestelde wedstrijden met een datum.
+- **Reduced motion (taak 35):** de smoketest controleert onder `prefers-reduced-motion` dat geen animatie langer duurt dan 0,01 s.
+- **Kopstructuur (taak 36):** `scripts/headings.py` controleert precies één h1 en geen overgeslagen niveaus. Resultaat: 1 h1, 45 koppen, geen sprongen.

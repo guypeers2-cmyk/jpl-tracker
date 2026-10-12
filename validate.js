@@ -36,6 +36,16 @@ for (const m of played) {
   if (m.hg > m.ag) pts[m.home] += 3; else if (m.hg < m.ag) pts[m.away] += 3; else { pts[m.home]++; pts[m.away]++; }
 }
 for (const s of D.scorers || []) if (!codes.has(s.team)) errors.push('onbekende club bij topscorer ' + s.name);
+// Seizoensschema tegen meta
+const sStart = D.meta.seasonStart, sEnd = D.meta.seasonEnd;
+for (const [k, m] of all) {
+  if (!m) continue;
+  const day = m.date.slice(0, 10);
+  if (day < sStart || day > sEnd) errors.push(`datum buiten seizoen ${day} (${m.home}-${m.away})`);
+  if (m.md < 1 || m.md > D.meta.matchdays) errors.push(`speeldag ${m.md} buiten 1..${D.meta.matchdays}`);
+}
+// Uitgestelde wedstrijden moeten een geldige datum hebben (geen lege of ontbrekende datum)
+for (const m of D.matches.filter(Boolean)) if (m.status === 'uitgesteld' && !m.date) errors.push('uitgestelde wedstrijd zonder datum');
 console.log(`Clubs: ${D.teams.length}  Gespeeld: ${played.length}  Open: ${D.fixtures.length}  Totaal: ${played.length + D.fixtures.length}`);
 warnings.forEach(w => console.log('WAARSCHUWING: ' + w));
 errors.forEach(e => console.log('FOUT: ' + e));

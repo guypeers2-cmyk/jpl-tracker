@@ -2,6 +2,7 @@
 
 ## Deploy
 0. Eerst naar staging: `./scripts/deploy.sh jpl-tracker-staging` en smoke-test op `jpl-tracker-staging.pages.dev`.
+0a. Productie wordt geblokkeerd tot staging voor dezelfde build is getest (`.staging-ok`).
 1. Omgeving: `export CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=...` (token met alleen Pages-bewerkrechten).
 2. `./scripts/deploy.sh` (validatie, build-ID en cachenaam ophogen, link-check, upload).
 3. `python3 scripts/smoke.py https://jpl-tracker.pages.dev/` moet "OK" tonen.

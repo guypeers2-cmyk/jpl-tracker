@@ -7,8 +7,19 @@ PROJECT="${1:-jpl-tracker}"
 : "${CLOUDFLARE_ACCOUNT_ID:?Zet CLOUDFLARE_ACCOUNT_ID}"
 cd "$(dirname "$0")/.."
 node validate.js
-node scripts/bump-build.js
 node scripts/check-links.js
+CURRENT_BUILD="$(grep -o 'name="build" content="[^"]*"' index.html | sed 's/.*content="\(.*\)"/\1/')"
+if [ "$PROJECT" = "jpl-tracker" ]; then
+  # Productie: alleen de build die op staging is getest, zonder opnieuw te bumpen
+  if [ ! -f .staging-ok ] || [ "$(cat .staging-ok)" != "$CURRENT_BUILD" ]; then
+    echo "GEBLOKKEERD: productie vereist een geslaagde staging-test van build $CURRENT_BUILD."
+    echo "Draai eerst: ./scripts/deploy.sh jpl-tracker-staging && python3 scripts/smoke.py https://jpl-tracker-staging.pages.dev/"
+    exit 1
+  fi
+else
+  node scripts/bump-build.js
+  rm -f .staging-ok
+fi
 OUT="$(mktemp -d)"
 cp index.html app.js data.js styles.css sw.js manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
 npx -y wrangler@3.114.17 pages deploy "$OUT" --project-name "$PROJECT" --branch main --commit-dirty=true
