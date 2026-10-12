@@ -84,3 +84,17 @@ Not changed, needs a decision:
 **Service worker bug fixed:** the worker served every same-origin file cache-first, so returning visitors kept old `app.js` and `data.js`, and so old scores, until the cache name changed. Scripts, data and the manifest are now network-first, with the cache as offline fallback. Cache name bumped to `jpl-v77`. **Bump `CACHE` in `sw.js` on every deploy that changes these files.**
 
 **False "new version" banner on first visit fixed:** the service worker announced an update whenever it activated, including the first install. It now only does so when an older cache existed.
+
+## Update: autonome uitvoering van squads 1–6 (2026-10-12)
+
+**Squad 1 Data:** `validate.js` toegevoegd (controle van clubs, wedstrijden, datums, totaal 306; slaagt). `meta.playedThrough` op 8 gezet. `DATA_SOURCES.md` toegevoegd. Topscorers en assists blijven open: de bronnen spreken elkaar tegen.
+
+**Squad 3 Prestaties:** inline CSS (66 KB) verplaatst naar `styles.css`. Brotli-compressie bevestigd (HTML 66 KB → 22 KB).
+
+**Squad 4 Beveiliging:** alle `target="_blank"`-links hebben `rel="noopener"`. Niet-bestaande `/api/*`-aanroepen krijgen nu een JSON-antwoord in plaats van de hele pagina (`_redirects` + `api-offline.json`). Visitor-teller en CSP bewust niet gewijzigd (juridische en productkeuze).
+
+**Squad 5 Toegankelijkheid:** axe-core gaf één ernstige fout (taalknop: zichtbaar "FR" maar naam in het Frans). Opgelost; axe vindt nu nul fouten op desktop en mobiel. Reduced-motion-regel was ongeldig (`NaNs`), nu gerepareerd.
+
+**Squad 6 DevOps:** `scripts/bump-build.js` (build-ID en cachenaam automatisch), `scripts/deploy.sh` (validatie, bump, link-check, deploy), `scripts/smoke.py` (smoketest), `scripts/check-links.js`, `RUNBOOK.md` (deploy en rollback), `CHECKLIST.md` (per speeldag), git-repository met `.gitignore`.
+
+**Niet uitgevoerd (keuze of extern nodig):** visitor-teller/consent (26–27), privacyverklaring (32, juridische tekst), clublogo's (49), token intrekken (30, moet in het Cloudflare-dashboard), topscorers (2), archief en kalender-controle (7–8), overige UX- en prestatiepunten (10–25, 33–40, 41-deel).

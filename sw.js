@@ -1,5 +1,5 @@
 /* JPL Tracker service worker: offline-first core, netwerk-eerst voor pagina's */
-const CACHE = 'jpl-v78';
+const CACHE = 'jpl-v79';
 const CORE = ['./', './index.html', './apple-touch-icon.png', './icon-192.png', './icon-512.png', './manifest.webmanifest', './data.js', './app.js'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
