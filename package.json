@@ -1,0 +1,18 @@
+{
+  "name": "jpl-tracker",
+  "version": "2026.10.12",
+  "private": true,
+  "description": "Jupiler Pro League 2026-27 tracker (statisch, Cloudflare Pages)",
+  "scripts": {
+    "validate": "node validate.js",
+    "check": "node scripts/check-links.js",
+    "snapshot": "node scripts/snapshot.js",
+    "deploy:staging": "./scripts/deploy.sh jpl-tracker-staging",
+    "deploy:prod": "./scripts/deploy.sh jpl-tracker"
+  },
+  "devDependencies": {
+    "wrangler": "3.114.17",
+    "axe-core": "4.10.2"
+  },
+  "engines": { "node": ">=20" }
+}

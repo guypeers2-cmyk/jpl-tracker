@@ -119,3 +119,29 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - Uitgestelde wedstrijd GNT–OHL heeft nu `status:"uitgesteld"` naast de notitie.
 - `scripts/snapshot.js`: schrijft de stand per dag naar `snapshots/<datum>.json`.
 - Nog open binnen Squad 1: twee-bronnen-automatisering, topscorers, "laatst gecontroleerd" per wedstrijd (data en weergave), aftraptijden-controle, archief.
+
+## Update: afwerking (2026-10-12)
+
+**Gedaan**
+- Lege "Vandaag"-kaart toont nu "Vandaag geen wedstrijden" met de volgende wedstrijd (NL en FR). Zie taak 10.
+- Printstijl voor de stand (taak 18).
+- HSTS-header met `max-age` (taak 33). Zonder `includeSubDomains`, zodat andere pages.dev-projecten niet worden geraakt.
+- Smoketest controleert nu ook toetsenbordnavigatie, het aantal tabs en de voettekst (taak 34).
+- `scripts/fr-scan.py`: vertaalscan voor de Franse weergave, nu in de CI (taken 36, 37).
+- `package.json` met vastgezette versies van Wrangler en axe-core (taak 44).
+- `.github/workflows/ci.yml`: validatie, linkcontrole, FR-scan en deploy naar staging op `main` (taak 41, 42).
+- Minificatie (taak 19) getest: geen winst (352 KB tegen 351 KB), dus niet doorgevoerd.
+
+**Externe domeinen (taak 31)**
+- `abacus.jasoncameron.dev`: visitor-teller (zie taak 26).
+- `www.transfermarkt.com`: links naar clubprofielen en transfers, alleen als gebruiker klikt.
+- Clubsites (rusg.brussels, kaagent.be, enz.): alleen links, geen scripts of stijlen.
+- Er worden geen externe scripts of stijlen geladen, behalve de teller.
+
+**Geblokkeerd, niet door mij te beslissen of te doen**
+- Visitor-teller en consent (26, 27), privacyverklaring en juridische controle (29, 49), token intrekken (30).
+- Git-remote (43): vraagt een repository-URL van jou.
+- Uptime-monitor en foutbewaking (45, 46): vraagt een externe dienst.
+- Topscorers en assists (2), aftraptijden (6), archief (7), twee-bronnen-automatisering (1): vraagt een bron.
+- CSP (28) en inline stijlen (35): ruim 200 `style`-attributen moeten eerst naar klassen.
+- Overige ontwerp- en prestatiepunten (12, 14, 15, 17, 20, 21, 22, 23, 24, 25, 32, 38, 39, 40, 47, 48): vragen een keuze of meer tijd dan deze sessie.

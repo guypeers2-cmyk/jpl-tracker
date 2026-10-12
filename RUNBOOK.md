@@ -16,3 +16,6 @@
 - **Bezoekers zien oude scores:** `CACHE` in `sw.js` is niet opgehoogd. Het deploy-script doet dat automatisch; draai het niet handmatig zonder bump.
 - **"Nieuwe versie"-banner bij nieuwe bezoekers:** build-ID in `index.html` klopt niet met de nieuwe deploy.
 - **Uitslagen ontbreken:** `node validate.js` draaien en de bron in `DATA_SOURCES.md` controleren.
+
+## CI
+`.github/workflows/ci.yml` valideert en controleert elke push. Deploy naar staging gebeurt automatisch op `main`, met de secrets `CLOUDFLARE_API_TOKEN` en `CLOUDFLARE_ACCOUNT_ID` in de GitHub-instellingen. Productie blijft handmatig via `./scripts/deploy.sh jpl-tracker`.
