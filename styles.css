@@ -39,3 +39,13 @@ th,td{font-size:12px!important}
 @media (max-width:600px){
   .mteam span,.hist-row b,.tr-row .p b,.gf-l1>b,.statrow .sc-pname{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}
 }
+
+/* Mobiele header: clubkeuze en knoppen op één rij, geen afkapping */
+@media (max-width:640px){
+  .topbar-in{flex-wrap:wrap;gap:10px}
+  .topbar-right{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .club-sel{flex:1 1 150px;min-width:0;max-width:none;font-size:13px}
+  .topbar-right .theme-btn{width:34px;height:34px}
+  .topbar-right .clock{order:9}
+  .topbar-right .visitors{order:10;flex:1 1 100%}
+}
