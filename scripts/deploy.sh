@@ -21,7 +21,12 @@ else
   rm -f .staging-ok
 fi
 OUT="$(mktemp -d)"
-cp index.html app.js data.js styles.css sw.js manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
+cp index.html app.js data.js styles.css sw.js theme-init.js manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
+# Controle: elk lokaal bestand dat index.html laadt moet in de upload zitten (anders geeft Pages de HTML-fallback)
+for ref in $(grep -oE '(src|href)="[^":#?]+"' index.html | sed -E 's/^(src|href)="//; s/"$//' | grep -v '^data:\|^//\|^https\?:' | sort -u); do
+  f="${ref#/}"; [ "$f" = "./" ] && continue
+  if [ ! -f "$OUT/$f" ] && [ "$f" != "" ]; then echo "FOUT: $f ontbreekt in de upload"; exit 1; fi
+done
 npx -y wrangler@3.114.17 pages deploy "$OUT" --project-name "$PROJECT" --branch main --commit-dirty=true
 echo "Upload klaar: $PROJECT"
 if [ "$PROJECT" = "jpl-tracker" ]; then
