@@ -25,3 +25,8 @@ Elk veld in `data.js` heeft een bron. Een uitslag wordt pas opgenomen als minste
 - `status:"uitgesteld"`: toegestane waarde (zie `validate.js`). Een uitgestelde wedstrijd hoort niet in `fixtures` te staan zonder datum.
 - Onbekende statuswaarden worden door `validate.js` geweigerd.
 - Een uitgestelde wedstrijd met een score geeft een waarschuwing. Controleer dan de bron.
+
+## Topscorers en assists (bijgewerkt 2026-10-13)
+- Bron: topscorervoetbal.nl, stand van zondag 11 oktober 22:32 (na speeldag 8, 72 wedstrijden).
+- Topscorers: alle 24 spelers met 3 of meer doelpunten. `share` = % van het teamdoel, `minPerGoal` = minuten per doelpunt.
+- Assists: 15 spelers met 3 of meer assists. Spelers met minder dan 3 assists staan in de bronlijst niet, daarom tonen ze in de topscorerlijst 0 assists. Dat is een bronbeperking, geen echte 0.
