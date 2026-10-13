@@ -189,3 +189,22 @@ html.light .card,html.light .clubcard,html.light .next,html.light .live-card{box
 .tilt{transition:box-shadow .2s ease}
 .c-win,.c-los{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.tilt{transition:none!important}}
+
+/* ===== Strakke laag, ronde 3 (stand, topscorers, clubs, statistiek) ===== */
+.stand-mobile,.sc-mobile{border-radius:10px}
+.stand-mobile .mrow,.sc-mobile .mrow{padding-top:9px;padding-bottom:9px}
+.chart{border-radius:10px}
+.clubcard{padding-top:14px;padding-bottom:14px}
+.clubcard .h2mini{letter-spacing:.04em}
+.wi-d{font-variant-numeric:tabular-nums}
+.worldrank{border-radius:999px;font-variant-numeric:tabular-nums}
+.statrow .v{line-height:1.15}
+.mini-logo{border-radius:50%}
+.swap{border-radius:999px}
+.seg{padding:3px}
+.seg button{border-radius:999px}
+.sq-toggle button{border-radius:999px}
+.hist-row{border-radius:8px}
+.tr-row{border-radius:8px}
+.p{letter-spacing:.005em}
+.nm-team{letter-spacing:.01em}
