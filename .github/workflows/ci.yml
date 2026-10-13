@@ -22,6 +22,8 @@ jobs:
       - run: echo "data.js gzip-grootte: $(gzip -c data.js | wc -c) bytes"
       - run: pip install playwright && python -m playwright install --with-deps chromium
       - run: python scripts/fr-scan.py
+      - run: python scripts/a11y-check.py
+      - run: python scripts/keyboard-check.py
   deploy-staging:
     needs: check
     if: github.ref == 'refs/heads/main'
