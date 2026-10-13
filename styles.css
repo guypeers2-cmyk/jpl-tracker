@@ -244,3 +244,9 @@ body{line-height:1.45}
   .pill,.chip,.cb-chip,.theme-btn,.view,.seg button,.sq-toggle button,.tab,.tab-ar,.search input,.card,.clubcard,.next,.kpi{transition:none!important}
   .pill:hover,.chip:hover,.cb-chip:hover,.pill:active,.chip:active,.theme-btn:active,.view:active{transform:none!important}
 }
+
+/* ===== Speeldag-keuzelijst (programma) ===== */
+.md-sel{appearance:none;-webkit-appearance:none;background:var(--card2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238290a9' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--tx);border:1.5px solid var(--line);border-radius:999px;padding:6px 32px 6px 14px;font:inherit;font-size:13px;font-weight:600;line-height:1.2;cursor:pointer;min-width:170px;transition:border-color .18s ease,box-shadow .18s ease}
+.md-sel:hover{border-color:var(--line2)}
+.md-sel:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.md-sel{transition:none}}
