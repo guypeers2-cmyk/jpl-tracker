@@ -2,3 +2,26 @@
 
 /* Printstijl: stand en uitslagen zonder navigatie */
 @media print{header,nav,.tabs,footer,button,.pills,#updBox,#todayBox,.clock{display:none!important}body{background:#fff!important;color:#000!important}.card{box-shadow:none!important;border:1px solid #999!important}}
+
+/* ===== Modern compact laag (stijl-update) =====
+   Overschrijft alleen maten, ruimte en afronding. Kleuren en structuur blijven gelijk. */
+:root{--r:12px;--r2:9px;--r3:7px}
+html body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:14px;line-height:1.45}
+h1,h2,h3,h4{letter-spacing:-.015em}
+.card{margin-bottom:12px}
+.card-p{padding:14px}
+.grid{gap:12px}
+.sec-h{margin-bottom:8px}
+.sec-h h2{font-size:17px}
+.kick{font-size:10.5px;letter-spacing:.09em;margin-bottom:10px}
+.kpi{padding:11px 12px}
+.kpi .v{font-size:21px}
+.k{font-size:10px;letter-spacing:.07em;margin-bottom:4px}
+.d{font-size:11px;margin-top:3px}
+.cd-u{padding:8px 10px;min-width:56px}
+.cd-u b{font-size:18px}
+.chip{font-size:11px;padding:3px 9px}
+.tabs button{padding:7px 12px;font-size:13px}
+.nm-teams{gap:8px}
+.nm-team b{font-size:14px}
+.kpi.tilt:hover{transform:none}
