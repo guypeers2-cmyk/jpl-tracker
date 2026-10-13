@@ -74,3 +74,88 @@ th,td{font-size:12px!important}
 .st19{display:flex!important;flex-direction:column!important}
 .st20{max-width:580px!important}
 .st21{font-weight:800!important}
+
+/* ===== Strakke laag (stijl-polish, 50 verbeteringen) =====
+   Alleen afstand, typografie, vorm, schaduw en beweging. Geen nieuwe kleuren; focusstijlen blijven zichtbaar. */
+
+/* -- Typografie en getallen -- */
+body{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.tbl td,.tbl th,.kpi .v,.mrow .n,.wi-d,.statrow .v,.cd-u{font-variant-numeric:tabular-nums}
+.sec-h{letter-spacing:.02em}
+.card-p .h2mini,.h2mini{letter-spacing:.04em}
+.kpi .l,.chip,.badge,.fm{letter-spacing:.02em}
+.brand-txt{letter-spacing:-.01em}
+.note{line-height:1.5}
+.src,.stale{line-height:1.4}
+.mini{line-height:1.3}
+.nm-team,.mteam{line-height:1.25}
+
+/* -- Ruimte en ritme -- */
+.card-p{padding:12px 14px}
+.card{margin-bottom:10px}
+.sec-h{margin-bottom:10px}
+.kpi{padding:10px 12px}
+.mday-h{padding-top:10px;padding-bottom:6px}
+.tbl td,.tbl th{padding-top:7px;padding-bottom:7px}
+.mrow{padding-top:8px;padding-bottom:8px}
+.statrow{gap:8px}
+.pills,.pill-row{gap:6px}
+.tabs{gap:2px}
+.hist-row{padding-top:6px;padding-bottom:6px}
+.tr-row{padding-top:6px;padding-bottom:6px}
+.lv-row{padding-top:6px;padding-bottom:6px}
+.cmd-item{padding-top:9px;padding-bottom:9px}
+
+/* -- Vorm en randen -- */
+.card,.kpi,.clubcard,.next,.live-card{border-radius:12px}
+.pill,.chip,.cb-chip,.seg,.sq-toggle,.search,.club-sel{border-radius:999px}
+.theme-btn{border-radius:10px}
+.bar,.wi-bar,.pred-bar{border-radius:999px;overflow:hidden}
+.tbl{border-radius:10px;overflow:hidden}
+.note,.src{border-radius:8px}
+.cmd-wrap{border-radius:14px}
+
+/* -- Schaduw voor diepte (neutraal zwart, past op licht en donker) -- */
+.card,.clubcard,.next,.live-card{box-shadow:0 1px 2px rgba(0,0,0,.18),0 6px 18px -10px rgba(0,0,0,.35)}
+.kpi{box-shadow:0 1px 2px rgba(0,0,0,.14)}
+html.light .card,html.light .clubcard,html.light .next,html.light .live-card{box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 16px -12px rgba(0,0,0,.18)}
+.cmd-wrap{box-shadow:0 18px 40px -12px rgba(0,0,0,.45)}
+
+/* -- Tabs en navigatie -- */
+.tab{padding-top:8px;padding-bottom:8px}
+.tab-ar{opacity:.85}
+.tab:hover .tab-ar,.tab[aria-selected="true"] .tab-ar{opacity:1}
+.tabs{scrollbar-width:thin}
+.topbar-right{gap:8px}
+
+/* -- Tabellen -- */
+.tbl thead th{letter-spacing:.04em}
+.tbl tbody tr{border-bottom-width:1px}
+.tbl tbody tr:last-child{border-bottom-width:0}
+.sq-tbl td{padding-top:6px;padding-bottom:6px}
+
+/* -- Knoppen en controls: duidelijke, rustige feedback -- */
+.pill,.chip,.cb-chip,.seg button,.sq-toggle button,.theme-btn,.view{transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease}
+.pill:active,.chip:active,.theme-btn:active{box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.search input{transition:border-color .18s ease,box-shadow .18s ease}
+.search input:focus{box-shadow:0 0 0 3px var(--ring)}
+
+/* -- Hover op kaarten: subtiel, zonder layoutverschuiving -- */
+.clubcard,.next{transition:box-shadow .2s ease,border-color .2s ease}
+.clubcard:hover,.next:hover{box-shadow:0 2px 4px rgba(0,0,0,.2),0 12px 26px -12px rgba(0,0,0,.45)}
+
+/* -- Compact op smalle schermen -- */
+@media (max-width:640px){
+  .card-p{padding:10px 12px}
+  .kpi{padding:9px 10px}
+  .sec-h{margin-bottom:8px}
+  .card{margin-bottom:8px}
+}
+
+/* -- Bewegingsvoorkeur: geen overgangen -- */
+@media (prefers-reduced-motion:reduce){
+  .pill,.chip,.cb-chip,.seg button,.sq-toggle button,.theme-btn,.view,.search input,.clubcard,.next{transition:none!important}
+}
+
+/* -- Focus blijft altijd zichtbaar -- */
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
