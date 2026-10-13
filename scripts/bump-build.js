@@ -11,6 +11,7 @@ if (!m) throw new Error('build-meta niet gevonden in index.html');
 const n = m[1] === today ? Number(m[2]) + 1 : 1;
 const build = `${today}-${n}`;
 html = html.replace(m[0], `<meta name="build" content="${build}">`);
+html = html.replace(/data\.js(\?v=[^"]*)?"/, `data.js?v=${build}"`);
 fs.writeFileSync(idxPath, html);
 let sw = fs.readFileSync(swPath, 'utf8');
 const c = /const CACHE = 'jpl-v(\d+)';/.exec(sw);
