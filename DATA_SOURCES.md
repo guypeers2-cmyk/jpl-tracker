@@ -30,3 +30,11 @@ Elk veld in `data.js` heeft een bron. Een uitslag wordt pas opgenomen als minste
 - Bron: topscorervoetbal.nl, stand van zondag 11 oktober 22:32 (na speeldag 8, 72 wedstrijden).
 - Topscorers: alle 24 spelers met 3 of meer doelpunten. `share` = % van het teamdoel, `minPerGoal` = minuten per doelpunt.
 - Assists: 15 spelers met 3 of meer assists. Spelers met minder dan 3 assists staan in de bronlijst niet, daarom tonen ze in de topscorerlijst 0 assists. Dat is een bronbeperking, geen echte 0.
+
+## Nieuws en extra cijfers (2026-10-13)
+- Nieuws: koppen van de overzichtspagina van voetbal24.be (8-10 okt 2026) en nieuwsblad.be (tag Jupiler Pro League, 11 okt). De artikelen zelf zijn niet gelezen; de koppen blijven Nederlands, ook in de Franse weergave. Nieuw toevoegen: `news` in data.js.
+- Extra cijfers (Statistiek): beide ploegen scoren, over 2,5 doelpunt, clean sheets en gemiddelde doelpunten. Zelf berekend uit de wedstrijden; gecontroleerd tegen voetbaluitslagen.be (43
+## Nieuws en extra cijfers (2026-10-13)
+- Nieuws: koppen van de overzichtspagina van voetbal24.be (8-10 okt 2026) en nieuwsblad.be (tag Jupiler Pro League, 11 okt). De artikelen zelf zijn niet gelezen; de koppen blijven Nederlands, ook in de Franse weergave. Nieuw toevoegen: `news` in data.js.
+- Extra cijfers (Statistiek): beide ploegen scoren, over 2,5 doelpunt, clean sheets en gemiddelde doelpunten. Zelf berekend uit de wedstrijden; gecontroleerd tegen voetbaluitslagen.be (43%, 61%, 57%).
+- Bron voor verdere cijfers (niet overgenomen): voetbalkrant.com statistieken (totaal 218 doelpunten, 18 penalty's, 9 owngoals, 236 gele en 14 rode kaarten).

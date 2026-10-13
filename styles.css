@@ -250,3 +250,10 @@ body{line-height:1.45}
 .md-sel:hover{border-color:var(--line2)}
 .md-sel:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.md-sel{transition:none}}
+
+/* ===== Nieuws en extra cijfers ===== */
+.news-item{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);color:var(--tx);text-decoration:none;margin-bottom:6px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.news-item:hover{border-color:var(--line2);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.news-item b{font-size:14px;line-height:1.35;font-weight:600}
+.news-d,.news-s{font-size:11px;color:var(--tx3)}
+@media (prefers-reduced-motion:reduce){.news-item{transition:none}}
