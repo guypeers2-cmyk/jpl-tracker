@@ -159,3 +159,33 @@ html.light .card,html.light .clubcard,html.light .next,html.light .live-card{box
 
 /* -- Focus blijft altijd zichtbaar -- */
 :focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* ===== Strakke laag, ronde 2 (tabellen, wedstrijdkaarten, details) ===== */
+.tbl-wrap{border-radius:10px;overflow:hidden}
+.tbl-wrap .tbl{border-radius:0}
+.mscore{font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.lstd-n,.lstd-a,.ls-n,.ls-r{font-variant-numeric:tabular-nums}
+.ls-info{line-height:1.4}
+.gl{letter-spacing:.01em}
+.gl-mk{font-variant-numeric:tabular-nums}
+.pm-h{padding-top:12px;padding-bottom:12px}
+.pm-chip{border-radius:999px}
+.pm-x{border-radius:8px}
+.h2box{border-radius:10px}
+.h2-w{letter-spacing:.01em}
+.cc-squad{gap:6px}
+.ff-box{border-radius:10px}
+.ff-tgl{border-radius:999px}
+.cn-card{border-radius:12px}
+.cn-x{border-radius:999px}
+.cn-msg,.cn-h{line-height:1.4}
+.empty{padding-top:24px;padding-bottom:24px;line-height:1.5}
+.ev-ic{border-radius:6px}
+.sub{line-height:1.45;letter-spacing:.005em}
+.sq-n-ct{font-variant-numeric:tabular-nums}
+.soon{border-radius:999px}
+.lv-h{letter-spacing:.04em}
+.lv-dot{box-shadow:0 0 0 2px rgba(0,0,0,.2)}
+.tilt{transition:box-shadow .2s ease}
+.c-win,.c-los{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.tilt{transition:none!important}}
