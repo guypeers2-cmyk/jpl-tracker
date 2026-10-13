@@ -151,3 +151,10 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - **Datachecks (taak 7, 9):** validatie controleert nu het seizoensschema (datums binnen `seasonStart`..`seasonEnd`), speeldagen binnen 1..34, en uitgestelde wedstrijden met een datum.
 - **Reduced motion (taak 35):** de smoketest controleert onder `prefers-reduced-motion` dat geen animatie langer duurt dan 0,01 s.
 - **Kopstructuur (taak 36):** `scripts/headings.py` controleert precies één h1 en geen overgeslagen niveaus. Resultaat: 1 h1, 45 koppen, geen sprongen.
+
+## Update: beslissingen eigenaar (2026-10-13)
+- **Bezoekersteller verwijderd.** Geen verzoek meer naar abacus.jasoncameron.dev, geen opslag van een bezoeker-ID. Daarmee vervalt de consent-vraag.
+- **Strikte CSP:** `script-src 'self'` en `style-src 'self'` zonder `'unsafe-inline'`. Het thema-script staat in `theme-init.js`. Inline stijlen staan als `data-st` en worden via `el.style.cssText` toegepast (`applyST` in `app.js`).
+- **Testproject `jpl-tracker-deploy`** verwijderd in Cloudflare.
+- **Git-remote:** geen. Alles blijft lokaal.
+- `meta.updated` naar 2026-10-13 (GNT–OHL is vandaag gecorrigeerd).
