@@ -18,3 +18,10 @@ Elk veld in `data.js` heeft een bron. Een uitslag wordt pas opgenomen als minste
 3. `meta.playedThrough` en `meta.updated` bijwerken.
 4. `node validate.js` uitvoeren; geen fouten toegestaan.
 5. Build-ID en `sw.js`-cachenaam ophogen, daarna deployen.
+
+
+## Statuswaarden in data.js
+- Geen `status`: gewone wedstrijd. Score in `hg`/`ag` bij een gespeelde wedstrijd, geen score bij een open wedstrijd (`fixtures`).
+- `status:"uitgesteld"`: toegestane waarde (zie `validate.js`). Een uitgestelde wedstrijd hoort niet in `fixtures` te staan zonder datum.
+- Onbekende statuswaarden worden door `validate.js` geweigerd.
+- Een uitgestelde wedstrijd met een score geeft een waarschuwing. Controleer dan de bron.

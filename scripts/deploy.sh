@@ -23,4 +23,15 @@ fi
 OUT="$(mktemp -d)"
 cp index.html app.js data.js styles.css sw.js manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
 npx -y wrangler@3.114.17 pages deploy "$OUT" --project-name "$PROJECT" --branch main --commit-dirty=true
-echo "Klaar. Draai daarna: python3 scripts/smoke.py https://$PROJECT.pages.dev/"
+echo "Upload klaar: $PROJECT"
+if [ "$PROJECT" = "jpl-tracker" ]; then
+  # Na productie: wacht tot Pages de nieuwe build serveert, dan smoketest; alleen bij OK een git-tag zetten
+  sleep 30
+  if python3 scripts/smoke.py "https://jpl-tracker.pages.dev/"; then
+    git tag "deploy/$CURRENT_BUILD" 2>/dev/null && echo "git-tag deploy/$CURRENT_BUILD gezet"
+  else
+    echo "SMOKETEST NA PRODUCTIE FAALT: draai RUNBOOK.md (terugdraaien)"; exit 1
+  fi
+else
+  echo "Klaar. Draai daarna: python3 scripts/smoke.py https://$PROJECT.pages.dev/"
+fi

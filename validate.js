@@ -46,6 +46,42 @@ for (const [k, m] of all) {
 }
 // Uitgestelde wedstrijden moeten een geldige datum hebben (geen lege of ontbrekende datum)
 for (const m of D.matches.filter(Boolean)) if (m.status === 'uitgesteld' && !m.date) errors.push('uitgestelde wedstrijd zonder datum');
+// Score-consistentie: gespeeld = numerieke score, open = geen score
+for (const m of D.matches.filter(Boolean)) {
+  if (!Number.isInteger(m.hg) || !Number.isInteger(m.ag)) errors.push(`gespeelde wedstrijd zonder geldige score: md${m.md} ${m.home}-${m.away}`);
+  if (m.status === 'uitgesteld') warnings.push(`uitgestelde wedstrijd heeft wel een score: md${m.md} ${m.home}-${m.away} ${m.hg}-${m.ag} (controleer)`);
+}
+for (const f of D.fixtures) {
+  if (f.hg != null || f.ag != null) errors.push(`open wedstrijd heeft al een score: md${f.md} ${f.home}-${f.away}`);
+}
+// Unieke clubnamen
+const names = D.teams.map(t => t.name);
+if (new Set(names).size !== names.length) errors.push('dubbele clubnamen in teams');
+// Stand moet overeenkomen met de laatste snapshot van dezelfde speeldag
+try {
+  const snapDir = __dirname + '/snapshots';
+  const files = fs.readdirSync(snapDir).filter(f => f.endsWith('.json')).sort();
+  if (files.length) {
+    const snap = JSON.parse(fs.readFileSync(snapDir + '/' + files[files.length - 1], 'utf8'));
+    if (snap.playedThrough === D.meta.playedThrough) {
+      const calc = {};
+      D.teams.forEach(t => calc[t.code] = { p: 0, gf: 0, ga: 0, pts: 0 });
+      for (const m of played) {
+        const h = calc[m.home], a = calc[m.away];
+        h.p++; a.p++; h.gf += m.hg; h.ga += m.ag; a.gf += m.ag; a.ga += m.hg;
+        if (m.hg > m.ag) h.pts += 3; else if (m.hg < m.ag) a.pts += 3; else { h.pts++; a.pts++; }
+      }
+      for (const r of snap.table) {
+        const c = calc[r.code];
+        if (!c) { errors.push(`snapshot bevat onbekende club ${r.code}`); continue; }
+        if (c.p !== r.p || c.pts !== r.pts || c.gf !== r.gf || c.ga !== r.ga)
+          errors.push(`stand ${r.code} wijkt af van snapshot ${files[files.length - 1]} (p ${c.p}/${r.p}, pts ${c.pts}/${r.pts})`);
+      }
+    } else {
+      warnings.push(`laatste snapshot is van speeldag ${snap.playedThrough}, data op ${D.meta.playedThrough}: vergelijking overgeslagen`);
+    }
+  }
+} catch (e) { warnings.push('snapshot-controle niet uitgevoerd: ' + e.message); }
 console.log(`Clubs: ${D.teams.length}  Gespeeld: ${played.length}  Open: ${D.fixtures.length}  Totaal: ${played.length + D.fixtures.length}`);
 warnings.forEach(w => console.log('WAARSCHUWING: ' + w));
 errors.forEach(e => console.log('FOUT: ' + e));

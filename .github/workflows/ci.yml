@@ -7,12 +7,19 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
       - run: node validate.js
+      - run: node scripts/test-dst.js
       - run: node scripts/check-links.js
+      - run: node scripts/check-noopener.js
+      - run: ./scripts/secret-scan.sh
+      - run: npm audit --omit=dev --audit-level=high
+      - run: echo "data.js gzip-grootte: $(gzip -c data.js | wc -c) bytes"
       - run: pip install playwright && python -m playwright install --with-deps chromium
       - run: python scripts/fr-scan.py
   deploy-staging:
@@ -20,12 +27,15 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 20
+          node-version-file: .nvmrc
+          cache: npm
       - run: npm ci
       - run: ./scripts/deploy.sh jpl-tracker-staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - run: python scripts/smoke.py https://jpl-tracker-staging.pages.dev/
