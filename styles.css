@@ -208,3 +208,39 @@ html.light .card,html.light .clubcard,html.light .next,html.light .live-card{box
 .tr-row{border-radius:8px}
 .p{letter-spacing:.005em}
 .nm-team{letter-spacing:.01em}
+
+/* ===== Compact, modern, vloeiend (ronde 4) =====
+   Ruimte iets strakker, consistente radius en overgangen. Geen kleurwijzigingen; minimumtekst blijft 11px. */
+:root{--r-sm:8px;--r-md:10px;--r-lg:12px;--ease:cubic-bezier(.2,.7,.2,1);--dur:.18s}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{line-height:1.45}
+.card,.kpi,.clubcard,.next,.live-card,.cn-card,.h2box,.ff-box{border-radius:var(--r-lg)}
+.card-p{padding:10px 12px}
+.card{margin-bottom:8px}
+.sec-h{margin-bottom:8px}
+.kpi{padding:8px 10px}
+.kpi .v{line-height:1.1}
+.tbl td,.tbl th{padding-top:6px;padding-bottom:6px}
+.tbl th{letter-spacing:.04em}
+.mrow{padding-top:7px;padding-bottom:7px}
+.mday-h{padding-top:8px;padding-bottom:5px}
+.statrow{gap:6px}
+.pill,.chip,.cb-chip,.theme-btn,.view,.seg button,.sq-toggle button{transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.pill:hover,.chip:hover,.cb-chip:hover{transform:translateY(-1px)}
+.pill:active,.chip:active,.theme-btn:active,.view:active{transform:translateY(0) scale(.98)}
+.card,.clubcard,.next,.kpi{transition:box-shadow .24s var(--ease),border-color .24s var(--ease)}
+.clubcard:hover,.next:hover,.kpi:hover{box-shadow:0 2px 4px rgba(0,0,0,.2),0 10px 24px -12px rgba(0,0,0,.4)}
+.tab{transition:color var(--dur) var(--ease),background-color var(--dur) var(--ease)}
+.tab-ar{transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.search input{transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+@media (max-width:640px){
+  .card-p{padding:9px 10px}
+  .kpi{padding:7px 9px}
+  .mrow{padding-top:6px;padding-bottom:6px}
+  .card{margin-bottom:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pill,.chip,.cb-chip,.theme-btn,.view,.seg button,.sq-toggle button,.tab,.tab-ar,.search input,.card,.clubcard,.next,.kpi{transition:none!important}
+  .pill:hover,.chip:hover,.cb-chip:hover,.pill:active,.chip:active,.theme-btn:active,.view:active{transform:none!important}
+}
