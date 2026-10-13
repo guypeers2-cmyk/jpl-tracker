@@ -49,3 +49,5 @@ th,td{font-size:12px!important}
   .topbar-right .clock{order:9}
   .topbar-right .visitors{order:10;flex:1 1 100%}
 }
+/* Kleine labels op minimaal 11px */
+.fm,.h2-head,.h2-chev,.chev,.dl,.sq-pos,.badge{font-size:11px!important}
