@@ -55,3 +55,11 @@ De code zet zelf geen cookies. **[bevestigen]** of de hostingdienst (Cloudflare 
 - Coins-functie: blijft in de code, niet uitrollen tot later.
 - KV-gebruik beperken: de huidige token mag Pages beheren maar geen KV lezen. Daardoor kan ik het KV-verbruik niet zien. Vanuit deze repository wordt nu niets in KV geschreven, want er draait geen backend.
 - De Cloudflare-token in de chat moet nog steeds worden ingetrokken en vervangen.
+
+## Vervolg (13 okt 2026)
+- Contact voor privacyvragen: guypeers3@gmail.com (opgegeven door de eigenaar).
+- KV-bindingen op het account (gelezen via de Pages-API):
+  - `jpl-tracker`: KV-binding `COINS` in productie en preview. Dit is de opslag voor de coins-functie. Er draaien geen functions, dus er wordt nu niets gelezen of geschreven.
+  - `chirogaverke` (ander project van de eigenaar): KV-binding `DB` in productie en preview. Niet in deze workspace; het gebruik ervan kan ik niet zien.
+  - Overige projecten: geen KV.
+- Verbruik (aantal lezingen en schrijvingen) is niet zichtbaar met deze token; dat staat in het Cloudflare-dashboard onder Workers & Pages → KV.
