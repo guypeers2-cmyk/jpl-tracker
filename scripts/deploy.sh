@@ -22,7 +22,7 @@ else
 fi
 OUT="$(mktemp -d)"
 node scripts/make-ics.js
-cp index.html app.js data.js styles.css sw.js theme-init.js calendar.ics manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
+cp index.html app.js data.js styles.css sw.js theme-init.js calendar.ics privacy.html manifest.webmanifest og.png icon-192.png icon-512.png apple-touch-icon.png favicon.ico _headers _redirects api-offline.json robots.txt sitemap.xml "$OUT/"
 # Controle: elk lokaal bestand dat index.html laadt moet in de upload zitten (anders geeft Pages de HTML-fallback)
 for ref in $(grep -oE '(src|href)="[^":#?]+"' index.html | sed -E 's/^(src|href)="//; s/"$//' | grep -v '^data:\|^//\|^https\?:' | sort -u); do
   f="${ref#/}"; [ "$f" = "./" ] && continue
