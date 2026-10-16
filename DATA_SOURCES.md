@@ -39,3 +39,4 @@ Elk veld in `data.js` heeft een bron. Een uitslag wordt pas opgenomen als minste
 - Extra cijfers (Statistiek): beide ploegen scoren, over 2,5 doelpunt, clean sheets en gemiddelde doelpunten. Zelf berekend uit de wedstrijden; gecontroleerd tegen voetbaluitslagen.be (43%, 61%, 57%).
 - Bron voor verdere cijfers (niet overgenomen): voetbalkrant.com statistieken (totaal 218 doelpunten, 18 penalty's, 9 owngoals, 236 gele en 14 rode kaarten).
 - Gele kaarten per speler (Statistiek): de top-5 (4 gele kaarten) staat in beide bronnen (voetbaluitslagen.be en voetbalkrant.com). Totalen gele/rode kaarten, penalty's en owngoals zijn NIET overgenomen: de bronnen spreken elkaar tegen (voetbalkrant hoofdpagina 72 wedstrijden, subpagina's 24-42).
+- Nieuws bijgewerkt 16 okt 2026: 4 koppen van 14-15 okt (voetbalprimeur.be, nieuwsblad.be) toegevoegd; lijst is nu 12 koppen. Koppen uit zoekresultaten, niet de artikelen gelezen.
