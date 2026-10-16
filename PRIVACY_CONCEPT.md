@@ -63,3 +63,7 @@ De code zet zelf geen cookies. **[bevestigen]** of de hostingdienst (Cloudflare 
   - `chirogaverke` (ander project van de eigenaar): KV-binding `DB` in productie en preview. Niet in deze workspace; het gebruik ervan kan ik niet zien.
   - Overige projecten: geen KV.
 - Verbruik (aantal lezingen en schrijvingen) is niet zichtbaar met deze token; dat staat in het Cloudflare-dashboard onder Workers & Pages → KV.
+
+## Besluit 16 okt 2026
+- Preview-KV-binding `COINS` op project `jpl-tracker` verwijderd (PATCH met `"COINS": null`, daarna gecontroleerd: preview en production hebben geen kv_namespaces meer).
+- Pincode coins: nog niet gewijzigd. Die wordt bij elke coins-aanroep als platte tekst naar `/api/coins` gestuurd. Hashing hoort bij de backend (Pages Functions), niet aan de clientkant, en pas bij activatie van de coins-functie.
