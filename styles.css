@@ -257,3 +257,6 @@ body{line-height:1.45}
 .news-item b{font-size:14px;line-height:1.35;font-weight:600}
 .news-d,.news-s{font-size:11px;color:var(--tx3)}
 @media (prefers-reduced-motion:reduce){.news-item{transition:none}}
+
+/* Privacypagina */
+.privacy-main{max-width:720px;margin:24px auto;padding:0 16px;line-height:1.55}
