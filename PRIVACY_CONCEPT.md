@@ -48,3 +48,10 @@ De code zet zelf geen cookies. **[bevestigen]** of de hostingdienst (Cloudflare 
 
 ## Beveiligingsbevinding (niet privacy-tekst, wel relevant)
 `jpl-coins-auth` bewaart de pincode in platte tekst in localStorage. Iedereen met toegang tot het apparaat of een XSS-lek kan die lezen. Advies: alleen een sessietoken lokaal bewaren; de pincode alleen server-side gehasht. Dat vraagt een wijziging in de backend, die niet in deze repository staat.
+
+## Besluiten van de eigenaar (13 okt 2026)
+- Backend: nog niet uitrollen; later. Mogelijke plaats: Cloudflare Pages Functions in hetzelfde project, met KV of D1 voor opslag.
+- Contactadres voor privacy: geen. **Let op:** onder de AVG hoort de verwerkingsverantwoordelijke bereikbaar te zijn. Zonder contact is de privacytekst dus niet volledig; dit is een juridisch punt voor de eigenaar.
+- Coins-functie: blijft in de code, niet uitrollen tot later.
+- KV-gebruik beperken: de huidige token mag Pages beheren maar geen KV lezen. Daardoor kan ik het KV-verbruik niet zien. Vanuit deze repository wordt nu niets in KV geschreven, want er draait geen backend.
+- De Cloudflare-token in de chat moet nog steeds worden ingetrokken en vervangen.
