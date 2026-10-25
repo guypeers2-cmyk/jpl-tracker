@@ -158,3 +158,9 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - **Testproject `jpl-tracker-deploy`** verwijderd in Cloudflare.
 - **Git-remote:** geen. Alles blijft lokaal.
 - `meta.updated` naar 2026-10-13 (GNT–OHL is vandaag gecorrigeerd).
+
+## Update: 16 okt 2026
+- Privacypagina live (`privacy.html`), CSP-melding opgelost, coins-opslag vermeld.
+- Nieuws bijgewerkt (14-15 okt). Speeldag 9 begint 23 okt; daarna opnieuw data bijwerken.
+- KV-binding `COINS` (preview) verwijderd. Coins-pincode-hashing wacht op backend.
+- `npm audit`: 0 kwetsbaarheden.
