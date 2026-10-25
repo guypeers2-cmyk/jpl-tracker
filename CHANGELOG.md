@@ -9,3 +9,8 @@
 - `npm audit`: 0 kwetsbaarheden; `npm outdated`: geen verouderde pakketten.
 
 Eerdere wijzigingen: zie git-log en tags `deploy/2026-10-13-*`.
+
+## Eerder (automatisch gegenereerd, 13 okt)
+
+Gegenereerd: 2026-10-13. Wijzigingen sinds deploy/2026-10-13-6:
+
