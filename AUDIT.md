@@ -164,3 +164,11 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - Nieuws bijgewerkt (14-15 okt). Speeldag 9 begint 23 okt; daarna opnieuw data bijwerken.
 - KV-binding `COINS` (preview) verwijderd. Coins-pincode-hashing wacht op backend.
 - `npm audit`: 0 kwetsbaarheden.
+
+
+## Update 2 november 2026 (speeldag 10)
+
+- Data: speeldag 9 (bar KOR-MEC) en speeldag 10 toegevoegd, `meta.playedThrough` 10.
+- Topscorers (34) en assists (18) vervangen door de bronlijst van topscorervoetbal.nl (1 nov 21:44). Leeftijd, nationaliteit, minuten per doelpunt en % teamdoel komen uit dezelfde bronpagina.
+- Controle: stand tegen de bronstand van 1 nov (na ronde 10): alle 18 clubs komen overeen op wedstrijden en punten. Kortrijk en Mechelen hebben 9 wedstrijden.
+- Validatie: 306 wedstrijden, 89 gespeeld, 217 open. Waarschuwing speeldag 9 (8 gespeeld) is verwacht door KOR-MEC op 4 nov.
