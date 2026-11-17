@@ -19,7 +19,7 @@ jobs:
       - run: node scripts/check-noopener.js
       - run: ./scripts/secret-scan.sh
       - run: npm audit --omit=dev --audit-level=high
-      - run: echo "data.js gzip-grootte: $(gzip -c data.js | wc -c) bytes"
+      - run: 'echo "data.js gzip-grootte: $(gzip -c data.js | wc -c) bytes"'
       - run: pip install playwright && python -m playwright install --with-deps chromium
       - run: python scripts/fr-scan.py
       - run: python scripts/a11y-check.py
