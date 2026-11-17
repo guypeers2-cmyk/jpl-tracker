@@ -197,11 +197,19 @@ def update():
     for x in merged_scorers:
         x['assists'] = amap[x['name']]['assists'] if x['name'] in amap else 0
 
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import extra_sources
+    news = extra_sources.fetch_news()
+    yellow = extra_sources.fetch_yellow_leaders()
+    log(f"nieuws: {len(news) if news else 'niet beschikbaar (blijft ongewijzigd)'}; gele kaarten: {len(yellow) if yellow else 'niet beschikbaar (blijft ongewijzigd)'}")
+
     payload = {
         'results': results,
         'standings': standings,
         'scorers': merged_scorers,
         'assists': merged_assists,
+        'news': news,
+        'yellow': yellow,
     }
     pj = os.path.join('/tmp', 'jpl-update-input.json')
     with open(pj, 'w', encoding='utf8') as f:
@@ -221,7 +229,7 @@ def update():
     if not info.get('changed'):
         log('geen nieuwe wijzigingen')
         return 0
-    log(f"wijzigingen: {info['newMatches']} nieuwe uitslagen, {info['scorers']} topscorers, {info['assists']} assists, speeldag {info['maxMd']}")
+    log(f"wijzigingen: {info['newMatches']} nieuwe uitslagen, {info['scorers']} topscorers, {info['assists']} assists, speeldag {info['maxMd']}, nieuws/kaarten bijgewerkt: {info.get('extra', False)}")
     if DRY:
         log('dry run: niet geschreven')
         return 0
@@ -250,7 +258,7 @@ def update():
     # Commit
     rc, author = run(['git', 'log', '-1', '--format=%an|%ae'])
     name, mail = author.strip().split('|', 1)
-    summary = f"{info['newMatches']} uitslagen, speeldag {info['maxMd']}, topscorers {info['scorers']}"
+    summary = f"{info['newMatches']} uitslagen, speeldag {info['maxMd']}, topscorers {info['scorers']}, nieuws+kaarten"
     run(['git', 'add', 'data.js', 'index.html', 'app.js', 'sitemap.xml', 'calendar.ics', 'sw.js', 'CHANGELOG.md', 'snapshots'], env=env)
     run(['git', '-c', f'user.name={name}', '-c', f'user.email={mail}', 'commit', '-qm', f'Auto-update: {summary}'], env=env)
 

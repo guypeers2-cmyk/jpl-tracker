@@ -66,8 +66,11 @@ const maxMd = Math.max(...allMatches.map(m => m.md));
 
 // 5. wijzigingen?
 const oldScorers = JSON.stringify(D.scorers), oldAssists = JSON.stringify(D.assists);
-const changed = newMatches.length > 0 || oldScorers !== JSON.stringify(scorersOut) || oldAssists !== JSON.stringify(assistsOut);
-out.newMatches = newMatches.length; out.scorers = scorersOut.length; out.assists = assistsOut.length; out.changed = changed;
+const newsOk = Array.isArray(inp.news) && inp.news.length >= 3;
+const yellowOk = Array.isArray(inp.yellow) && inp.yellow.length >= 5;
+const extraChanged = (newsOk && JSON.stringify(D.news) !== JSON.stringify(inp.news)) || (yellowOk && JSON.stringify(D.yellowLeaders) !== JSON.stringify(inp.yellow));
+const changed = newMatches.length > 0 || oldScorers !== JSON.stringify(scorersOut) || oldAssists !== JSON.stringify(assistsOut) || extraChanged;
+out.newMatches = newMatches.length; out.scorers = scorersOut.length; out.assists = assistsOut.length; out.changed = changed; out.extra = extraChanged;
 out.ok = true;
 out.maxMd = maxMd;
 if (!changed || dry) { console.log(JSON.stringify(out)); process.exit(0); }
@@ -82,7 +85,15 @@ const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Brussel
 const text = s.slice(0, i0) + existingMatches + ',' + newMatches.map(jsonK).join(',') + ']' +
   ',fixtures:' + jsonK(keepFix) +
   ',scorers:' + jsonK(scorersOut) + ',assists:' + jsonK(assistsOut) + s.slice(iMC + 1);
-const fixed = text.replace(/playedThrough:\d+/, 'playedThrough:' + maxMd).replace(/updated:"[^"]*"/, 'updated:"' + today + '"');
+let text2 = text;
+{
+  const a = text2.indexOf('yellowLeaders:['), b = text2.indexOf(',news:['), c = text2.indexOf(',meta:{');
+  if (a < 0 || b < 0 || c < 0 || !(a < b && b < c)) fail('merker yellowLeaders/news/meta niet gevonden');
+  const yl = yellowOk ? inp.yellow : D.yellowLeaders;
+  const nw = newsOk ? inp.news : D.news;
+  text2 = text2.slice(0, a) + 'yellowLeaders:' + jsonK(yl) + ',news:' + jsonK(nw) + text2.slice(c);
+}
+const fixed = text2.replace(/playedThrough:\d+/, 'playedThrough:' + maxMd).replace(/updated:"[^"]*"/, 'updated:"' + today + '"');
 const c2 = {}; vm.createContext(c2); vm.runInContext(fixed + ';this.D=DATA;', c2);
 if (c2.D.matches.length !== allMatches.length) fail('controle na schrijven mislukt');
 fs.writeFileSync(root + 'data.js', fixed);
