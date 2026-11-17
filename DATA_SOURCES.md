@@ -5,10 +5,10 @@ Elk veld in `data.js` heeft een bron. Een uitslag wordt pas opgenomen als minste
 | Veld | Bron | Controle |
 |---|---|---|
 | `teams` (naam, stadion, kleuren, website) | Clubwebsites | Eenmalig per seizoen |
-| `matches` (uitslagen) | Sporza, Nieuwsblad, voetbaluitslagen.be, proleague.be; stand en speeldagen ook topscorervoetbal.nl (1 nov 2026) | Twee bronnen moeten overeenkomen |
+| `matches` (uitslagen) | Sporza, Nieuwsblad, voetbaluitslagen.be, proleague.be; stand en speeldagen ook topscorervoetbal.nl (13 nov 2026) | Twee bronnen moeten overeenkomen |
 | `fixtures` (programma, aftraptijden) | proleague.be kalender | Controle bij elke wijziging |
-| `scorers` (topscorers) | topscorervoetbal.nl, 1 nov 2026 21:44 (34 spelers) | Bijgewerkt na speeldag 10 |
-| `assists` (assists) | topscorervoetbal.nl, 1 nov 2026 21:44 (18 spelers) | Bijgewerkt na speeldag 10 |
+| `scorers` (topscorers) | topscorervoetbal.nl, 13 nov 2026 01:32 (35 spelers) | Bijgewerkt na speeldag 11 |
+| `assists` (assists) | topscorervoetbal.nl, 13 nov 2026 01:32 (top 10; 3-assistspelers op bron 1 nov) | Bijgewerkt na speeldag 11 |
 | `managerChanges` | Clubnieuws | Handmatig |
 | `supercup` | Officiële bron | Eenmalig |
 

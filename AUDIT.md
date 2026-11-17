@@ -172,3 +172,10 @@ Nog open: topscorers/assists, visitor-teller en consent, privacyverklaring, CSP,
 - Topscorers (34) en assists (18) vervangen door de bronlijst van topscorervoetbal.nl (1 nov 21:44). Leeftijd, nationaliteit, minuten per doelpunt en % teamdoel komen uit dezelfde bronpagina.
 - Controle: stand tegen de bronstand van 1 nov (na ronde 10): alle 18 clubs komen overeen op wedstrijden en punten. Kortrijk en Mechelen hebben 9 wedstrijden.
 - Validatie: 306 wedstrijden, 89 gespeeld, 217 open. Waarschuwing speeldag 9 (8 gespeeld) is verwacht door KOR-MEC op 4 nov.
+
+## Update 17 november 2026 (speeldag 11)
+
+- Data: KOR-MEC (speeldag 9, 4 nov) en speeldag 11 toegevoegd, `meta.playedThrough` 11.
+- Topscorers (35) bijgewerkt naar de bronlijst van 13 nov 01:32.
+- Stand tegen de bronstand na ronde 11: alle 18 clubs komen overeen op wedstrijden, W-G-V, doelpunten en punten.
+- Open: CLU-AND datum (bron 7 nov, programma 8 nov). Assists met 3 zijn niet meer in de bron (top 10 alleen).
